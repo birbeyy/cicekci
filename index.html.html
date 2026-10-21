@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Papatya & Gül Çiçekçilik</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff7f3;--surface:#ffffff;--ink:#3a1f2b;--muted:#7a5d68;--rose:#c2417a;--leaf:#2f6b4f;--sun:#f5b942;--line:#f0d9d9;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#241519;--surface:#321d24;--ink:#fbeee9;--muted:#cfaab5;--rose:#f07ab0;--leaf:#7fd1a5;--sun:#f5b942;--line:#4a2d37}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 0;flex-wrap:wrap;gap:10px}
+.logo{font-family:Fraunces,serif;font-weight:700;font-size:1.3rem;color:var(--rose)}
+nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-weight:600}
+nav a:hover{color:var(--rose)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:40px 0 60px}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem)}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:46ch}
+.btn{display:inline-block;background:var(--rose);color:#fff;padding:12px 26px;border-radius:30px;text-decoration:none;font-weight:700;border:0;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.bloom{display:flex;justify-content:center}
+.bloom svg{width:min(340px,80vw);height:auto;animation:sway 6s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes sway{50%{transform:rotate(3deg)}}
+@media (prefers-reduced-motion:reduce){.bloom svg{animation:none}}
+section{padding:50px 0}
+section h2{font-size:2rem;margin-bottom:8px}
+.sub{color:var(--muted);margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+.card .em{font-size:3rem}
+.card h3{font-size:1.2rem;margin:6px 0}
+.price{color:var(--leaf);font-weight:700}
+.card .btn{margin-top:10px;padding:8px 18px;font-size:.9rem}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.about ul{padding-left:20px;color:var(--muted)}
+form{display:grid;gap:12px;max-width:520px}
+label{font-weight:600}
+input,select,textarea{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
+#msg{color:var(--leaf);font-weight:700;min-height:1.4em}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);text-align:center;margin-top:30px}
+@media (max-width:760px){.hero,.about{grid-template-columns:1fr}.bloom{order:-1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="logo">Papatya &amp; Gül</div>
+<nav><a href="#urunler">Ürünler</a><a href="#hakkimizda">Hakkımızda</a><a href="#siparis">Sipariş</a><a href="#iletisim">İletişim</a></nav>
+</header>
+
+<div class="hero">
+<div>
+<h1>Her duygu için bir çiçek var.</h1>
+<p>Sabah toplanan taze çiçeklerle hazırladığımız buketleri aynı gün kapınıza getiriyoruz.</p>
+<p><a class="btn" href="#siparis">Sipariş ver</a></p>
+</div>
+<div class="bloom" aria-hidden="true">
+<svg viewBox="0 0 200 260">
+<path d="M100 130 C100 180 95 220 100 255" stroke="#2f6b4f" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M99 200 C70 190 55 170 50 160 C80 160 95 175 99 200Z" fill="#2f6b4f"/>
+<path d="M101 225 C130 215 145 195 150 185 C120 185 105 200 101 225Z" fill="#3f8a66"/>
+<g fill="#c2417a"><ellipse cx="100" cy="60" rx="24" ry="40"/><ellipse cx="100" cy="60" rx="24" ry="40" transform="rotate(72 100 100)"/><ellipse cx="100" cy="60" rx="24" ry="40" transform="rotate(144 100 100)"/><ellipse cx="100" cy="60" rx="24" ry="40" transform="rotate(216 100 100)"/><ellipse cx="100" cy="60" rx="24" ry="40" transform="rotate(288 100 100)"/></g>
+<circle cx="100" cy="100" r="20" fill="#f5b942"/>
+</svg>
+</div>
+</div>
+
+<section id="urunler">
+<h2>Ürünlerimiz</h2>
+<p class="sub">En çok tercih edilen çiçeklerimiz.</p>
+<div class="grid">
+<div class="card"><div class="em">🌹</div><h3>Kırmızı gül buketi</h3><p>11 adet taze gül, kraft ambalaj.</p><div class="price">450 ₺</div><a class="btn" href="#siparis" data-p="Kırmızı gül buketi">Seç</a></div>
+<div class="card"><div class="em">🌷</div><h3>Lale demeti</h3><p>Renkli 15 lale, mevsime özel.</p><div class="price">320 ₺</div><a class="btn" href="#siparis" data-p="Lale demeti">Seç</a></div>
+<div class="card"><div class="em">🌻</div><h3>Ayçiçeği aranjmanı</h3><p>Seramik vazoda neşeli bir hediye.</p><div class="price">520 ₺</div><a class="btn" href="#siparis" data-p="Ayçiçeği aranjmanı">Seç</a></div>
+<div class="card"><div class="em">🪻</div><h3>Orkide</h3><p>Uzun ömürlü saksı orkide.</p><div class="price">650 ₺</div><a class="btn" href="#siparis" data-p="Orkide">Seç</a></div>
+</div>
+</section>
+
+<section id="hakkimizda">
+<div class="about">
+<div>
+<h2>Hakkımızda</h2>
+<p class="sub">1998’den beri aynı sokakta, aynı özenle.</p>
+<p>Aile işletmesi olarak başladık. Çiçeklerimizi her sabah yerel üreticilerden alıyor, her buketi tek tek elle hazırlıyoruz.</p>
+</div>
+<ul>
+<li>Aynı gün teslimat</li>
+<li>Doğum günü, düğün ve cenaze çelengi</li>
+<li>Kurumsal çiçek abonelikleri</li>
+<li>Ücretsiz not kartı</li>
+</ul>
+</div>
+</section>
+
+<section id="siparis">
+<h2>Sipariş formu</h2>
+<p class="sub">Formu doldurun, sizi arayıp teyit edelim.</p>
+<form id="f">
+<div><label for="n">Adınız</label><input id="n" required></div>
+<div><label for="u">Ürün</label>
+<select id="u"><option>Kırmızı gül buketi</option><option>Lale demeti</option><option>Ayçiçeği aranjmanı</option><option>Orkide</option></select></div>
+<div><label for="a">Teslimat adresi</label><textarea id="a" rows="3" required></textarea></div>
+<button class="btn" type="submit">Siparişi gönder</button>
+<div id="msg" role="status"></div>
+</form>
+</section>
+
+<section id="iletisim">
+<h2>İletişim</h2>
+<p class="sub">Adres: Çiçek Sokak No: 12, Kütahya<br>Telefon: 0274 000 00 00<br>Çalışma saatleri: her gün 08:00 – 20:00</p>
+</section>
+</div>
+<footer>© 2026 Papatya &amp; Gül Çiçekçilik</footer>
+
+<script>
+document.querySelectorAll('[data-p]').forEach(function(b){b.addEventListener('click',function(){document.getElementById('u').value=b.dataset.p})});
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();
+document.getElementById('msg').textContent='Teşekkürler '+document.getElementById('n').value+', siparişin alındı!';this.reset()});
+</script>
+</body>
+</html>

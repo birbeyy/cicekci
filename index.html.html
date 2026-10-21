@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yeşil Bahçe Çiçekçilik</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#1f3d2f;--moss:#4d7a5e;--peach:#f6c9b5;--cream:#fbf6ef;--ink:#22302a;--berry:#b23a5b}
+*{box-sizing:border-box}
+body{margin:0;font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;margin:0;line-height:1.15}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+a{color:inherit}
+header{position:sticky;top:0;z-index:20;background:var(--forest);color:#fff}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700}
+nav a{text-decoration:none;margin-left:20px;font-size:.95rem}
+nav a:hover{color:var(--peach)}
+.cartbtn{background:var(--peach);color:var(--forest);border:0;border-radius:24px;padding:8px 16px;font-weight:700;cursor:pointer;font-family:inherit}
+.hero{min-height:78vh;display:flex;align-items:center;color:#fff;background:linear-gradient(90deg,rgba(20,40,30,.85),rgba(20,40,30,.25)),url(https://unsplash.com/photos/gezXR7PrrJA/download?force=true&w=1600) center/cover,var(--moss)}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);max-width:14ch}
+.hero p{max-width:44ch;font-size:1.15rem;margin:16px 0 26px}
+.btn{display:inline-block;background:var(--peach);color:var(--forest);padding:13px 28px;border-radius:30px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-family:inherit;font-size:1rem}
+.btn.dark{background:var(--forest);color:#fff}
+.strip{background:var(--peach);padding:16px 0}
+.strip .wrap{display:flex;gap:10px 34px;flex-wrap:wrap;justify-content:center;font-weight:500}
+section{padding:60px 0}
+h2{font-size:2.2rem;margin-bottom:8px}
+.sub{color:#5d6d64;margin:0 0 24px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.filters button{border:1.5px solid var(--forest);background:transparent;color:var(--forest);padding:8px 18px;border-radius:24px;cursor:pointer;font:inherit;font-weight:500}
+.filters button.on{background:var(--forest);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 14px rgba(31,61,47,.1);display:flex;flex-direction:column}
+.ph{aspect-ratio:4/5;background:linear-gradient(135deg,var(--peach),#e9d8c8);display:flex;align-items:center;justify-content:center;font-size:4rem;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.card:hover .ph img{transform:scale(1.05)}
+.info{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.info h3{font-size:1.15rem}
+.info p{margin:0;font-size:.92rem;color:#5d6d64;flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.price{font-weight:700;color:var(--berry);font-size:1.1rem}
+.add{background:var(--forest);color:#fff;border:0;border-radius:20px;padding:8px 16px;cursor:pointer;font:inherit;font-weight:500}
+.add:hover{background:var(--moss)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.about .pic{aspect-ratio:4/3;border-radius:18px;background:url(https://unsplash.com/photos/hCwdw8SUkVo/download?force=true&w=1000) center/cover,var(--moss)}
+.dark-sec{background:var(--forest);color:#fff}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.steps div{background:rgba(255,255,255,.08);border-radius:14px;padding:20px}
+.steps b{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--peach)}
+form{display:grid;gap:12px;max-width:520px}
+input,textarea{width:100%;padding:11px 13px;border-radius:12px;border:1px solid #cdd8d0;font:inherit}
+footer{background:#14281e;color:#cfe0d5;text-align:center;padding:26px 0;font-size:.9rem}
+#drawer{position:fixed;top:0;right:-420px;width:min(400px,100%);height:100%;background:#fff;z-index:50;box-shadow:-6px 0 24px rgba(0,0,0,.2);transition:right .3s;padding:20px;display:flex;flex-direction:column}
+#drawer.open{right:0}
+#items{flex:1;overflow:auto}
+.it{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid #eee}
+.it button{border:0;background:none;color:var(--berry);cursor:pointer;font-size:1.1rem}
+:focus-visible{outline:3px solid var(--berry);outline-offset:2px}
+@media (max-width:760px){.about{grid-template-columns:1fr}nav{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="logo">Yeşil Bahçe</div>
+<nav><a href="#urunler">Çiçekler</a><a href="#hakkimizda">Hakkımızda</a><a href="#nasil">Nasıl çalışır</a><a href="#iletisim">İletişim</a></nav>
+<button class="cartbtn" id="cb">Sepet (<span id="cn">0</span>)</button>
+</div></header>
+
+<div class="hero"><div class="wrap">
+<h1>Taze çiçek, aynı gün kapında.</h1>
+<p>Sabah toplanan çiçeklerle her duyguya uygun buket, saksı ve aranjman hazırlıyoruz.</p>
+<a class="btn" href="#urunler">Çiçekleri keşfet</a>
+</div></div>
+
+<div class="strip"><div class="wrap"><span>Aynı gün teslimat</span><span>Ücretsiz not kartı</span><span>%100 taze garanti</span><span>Düğün ve etkinlik süsleme</span></div></div>
+
+<section id="urunler"><div class="wrap">
+<h2>Çiçeklerimiz</h2>
+<p class="sub">Kategoriye göre filtrele, beğendiğini sepete ekle.</p>
+<div class="filters" id="fl"></div>
+<div class="grid" id="gr"></div>
+</div></section>
+
+<section id="hakkimizda" style="background:#fff"><div class="wrap about">
+<div><h2>Hakkımızda</h2>
+<p class="sub">1998’den beri aynı sokakta, aynı özenle.</p>
+<p>Aile işletmesi olarak başladık. Çiçeklerimizi her sabah yerel üreticilerden alıyor, her buketi tek tek elle hazırlıyoruz. Doğum günü, yıldönümü, düğün ya da sadece “aklıma geldin” demek için buradayız.</p></div>
+<div class="pic" role="img" aria-label="Çiçekçi dükkânımız"></div>
+</div></section>
+
+<section id="nasil" class="dark-sec"><div class="wrap">
+<h2>Nasıl çalışır?</h2>
+<p class="sub" style="color:#cfe0d5">Üç adımda çiçek kapında.</p>
+<div class="steps">
+<div><b>1. Seç</b><p>Kategorilerden çiçeği seç ve sepete ekle.</p></div>
+<div><b>2. Bilgileri gir</b><p>Adres ve not kartı mesajını yaz.</p></div>
+<div><b>3. Teslim al</b><p>Aynı gün içinde kuryemiz çiçeği getirir.</p></div>
+</div></div></section>
+
+<section id="iletisim"><div class="wrap">
+<h2>Bize ulaşın</h2>
+<p class="sub">Adres: Çiçek Sokak No: 12, Kütahya · Tel: 0274 000 00 00 · Her gün 08:00–20:00</p>
+<form id="cf">
+<input id="cn2" placeholder="Adınız" required>
+<input id="ce" type="email" placeholder="E-posta" required>
+<textarea id="cm" rows="4" placeholder="Mesajınız" required></textarea>
+<button class="btn dark" type="submit">Mesaj gönder</button>
+<div id="cmsg" role="status"></div>
+</form>
+</div></section>
+
+<footer>© 2026 Yeşil Bahçe Çiçekçilik · Tüm hakları saklıdır · Fotoğraflar: Unsplash</footer>
+
+<aside id="drawer" aria-label="Sepet">
+<div style="display:flex;justify-content:space-between;align-items:center"><h3>Sepetin</h3><button class="add" id="cl">Kapat</button></div>
+<div id="items"></div>
+<div class="row"><b>Toplam</b><span class="price" id="tot">0 ₺</span></div>
+<button class="btn dark" id="ord" style="margin-top:12px">Siparişi tamamla</button>
+<div id="om" role="status" style="margin-top:8px;font-weight:700;color:var(--moss)"></div>
+</aside>
+
+<script>
+var P=[
+["Kırmızı gül buketi","Güller",450,"kKRccEUbnek","🌹","Zarif ambalajda taze kırmızı güller."],
+["Koyu kırmızı güller","Güller",520,"d7j9Nq8IBdY","🌹","Derin tonlu, uzun saplı güller."],
+["Kırmızı lale demeti","Laleler",320,"iUcYnR2RLmo","🌷","Canlı kırmızı mevsim laleleri."],
+["Sarı lale demeti","Laleler",300,"0nhHgYZQ70I","🌷","Güne ışık getiren sarı laleler."],
+["Pembe lale buketi","Laleler",340,"Nc81t5f6XwY","🌷","Yumuşak pembe tonlarda bahar buketi."],
+["Vazoda lale","Laleler",410,"xV3y09AWOwo","🌷","Seramik vazoda hazır aranjman."],
+["Ayçiçeği buketi","Ayçiçekleri",380,"jlwAIT6Cy0o","🌻","Neşe dolu sarı ayçiçekleri."],
+["Sepette sarı çiçekler","Ayçiçekleri",460,"2GldkRlqwAs","🧺","Hasır sepette sıcak sarı tonlar."],
+["Kır çiçeği buketi","Karışık buketler",430,"gezXR7PrrJA","💐","Rengarenk doğal kır çiçekleri."],
+["Beyaz pembe buket","Karışık buketler",490,"g4EvFf1Eo9A","💐","Tatlı, romantik karışık buket."],
+["Beyaz orkide","Karışık buketler",650,"DlPu8_cK9bE","🪻","Sade ve şık, uzun ömürlü orkide."]
+];
+function U(id){return "https://unsplash.com/photos/"+id+"/download?force=true&w=800"}
+var cats=["Tümü","Güller","Laleler","Ayçiçekleri","Karışık buketler"],cur="Tümü",cart=[];
+function $(i){return document.getElementById(i)}
+function render(){
+ $("fl").innerHTML="";
+ cats.forEach(function(c){var b=document.createElement("button");b.textContent=c;if(c===cur)b.className="on";b.onclick=function(){cur=c;render()};$("fl").appendChild(b)});
+ $("gr").innerHTML="";
+ P.forEach(function(p,i){
+  if(cur!=="Tümü"&&p[1]!==cur)return;
+  var d=document.createElement("div");d.className="card";
+  d.innerHTML='<div class="ph"><img src="'+U(p[3])+'" alt="'+p[0]+'" loading="lazy"></div><div class="info"><h3>'+p[0]+'</h3><p>'+p[5]+'</p><div class="row"><span class="price">'+p[2]+' ₺</span><button class="add">Sepete ekle</button></div></div>';
+  d.querySelector("img").onerror=function(){this.parentNode.textContent=p[4]};
+  d.querySelector(".add").onclick=function(){cart.push(i);upd()};
+  $("gr").appendChild(d);
+ });
+}
+function upd(){
+ $("cn").textContent=cart.length;$("items").innerHTML="";var t=0;
+ cart.forEach(function(i,k){t+=P[i][2];var r=document.createElement("div");r.className="it";r.innerHTML="<span>"+P[i][0]+" — "+P[i][2]+" ₺</span><button aria-label='Sil'>✕</button>";r.querySelector("button").onclick=function(){cart.splice(k,1);upd()};$("items").appendChild(r)});
+ if(!cart.length)$("items").innerHTML="<p>Sepetin boş. Bir çiçek seç.</p>";
+ $("tot").textContent=t+" ₺";$("om").textContent="";
+}
+$("cb").onclick=function(){$("drawer").classList.add("open")};
+$("cl").onclick=function(){$("drawer").classList.remove("open")};
+$("ord").onclick=function(){$("om").textContent=cart.length?"Siparişin alındı, seni arayıp teyit edeceğiz!":"Önce sepete bir ürün ekle.";if(cart.length){cart=[];$("cn").textContent=0;$("items").innerHTML="";$("tot").textContent="0 ₺"}};
+$("cf").onsubmit=function(e){e.preventDefault();$("cmsg").textContent="Teşekkürler "+$("cn2").value+", mesajın bize ulaştı.";this.reset()};
+render();upd();
+</script>
+</body>
+</html>
